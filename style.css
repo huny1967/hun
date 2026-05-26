@@ -1,0 +1,1468 @@
+/* ==========================================
+   CSS Design System & Variables
+   ========================================== */
+:root {
+    --bg-primary: #FDFBF7;       /* Warm Soft Ivory */
+    --bg-secondary: #FAF6F0;     /* Greige / Light Sand */
+    --primary-color: #C68B75;    /* Premium Rose Gold */
+    --primary-light: #E8D3C9;    /* Soft Muted Peach */
+    --primary-dark: #A56D58;     /* Deep Rose Gold */
+    --text-main: #2C2A29;        /* Warm Dark Charcoal */
+    --text-sub: #7A7572;         /* Soft Gray Charcoal */
+    --border-color: #EAE3D8;     /* Delicate Sand Border */
+    --white: #FFFFFF;
+    --gold: #D4AF37;
+    
+    --font-serif-en: 'Cinzel', serif;
+    --font-serif-ko: 'Noto Serif KR', serif;
+    --font-sans-ko: 'Pretendard', 'Noto Sans KR', sans-serif;
+    --font-sans-en: 'Montserrat', sans-serif;
+
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-quick: all 0.2s ease-in-out;
+}
+
+/* ==========================================
+   Base Setup & Reset
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: #121212; /* Dark background outside the mobile frame on desktop */
+}
+
+body {
+    font-family: var(--font-sans-ko);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Constrain content to mobile phone aspect ratio on large screens */
+.mobile-container {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--bg-primary);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom Scrollbar for container */
+.mobile-container::-webkit-scrollbar {
+    width: 6px;
+}
+.mobile-container::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+.mobile-container::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 3px;
+}
+
+/* ==========================================
+   Typography & Global Components
+   ========================================== */
+h1, h2, h3, h4, h5 {
+    font-weight: 500;
+}
+
+p {
+    font-size: 0.95rem;
+    word-break: keep-all;
+}
+
+/* Section Header standard */
+.section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-top: 1rem;
+}
+
+.section-header .sub-title {
+    font-family: var(--font-serif-en);
+    font-size: 0.75rem;
+    letter-spacing: 0.2rem;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.section-header .main-title {
+    font-family: var(--font-serif-ko);
+    font-size: 1.6rem;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+.section-desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin-top: -0.4rem;
+}
+
+.ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 0 auto;
+    width: 120px;
+}
+
+.ornament .line {
+    height: 1px;
+    background-color: var(--border-color);
+    flex-grow: 1;
+}
+
+.ornament .dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--primary-color);
+    transform: rotate(45deg);
+}
+
+/* Standard Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-family: var(--font-sans-ko);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-quick);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-dark);
+}
+
+.btn-outline:hover, .btn-outline:active {
+    background-color: rgba(198, 139, 117, 0.08);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(198, 139, 117, 0.2);
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--primary-dark);
+}
+
+.btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================
+   Floating Music Player
+   ========================================== */
+.audio-control-wrapper {
+    position: fixed;
+    right: calc(50% - 220px); /* Align perfectly outside the frame on desktop, inside on mobile */
+    top: 20px;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+@media (max-width: 480px) {
+    .audio-control-wrapper {
+        right: 20px;
+    }
+}
+
+.bgm-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(253, 251, 247, 0.85);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-color);
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.bgm-btn:active {
+    transform: scale(0.9);
+}
+
+.icon-music {
+    width: 18px;
+    height: 18px;
+    transition: var(--transition-quick);
+}
+
+/* Music Wave animation */
+.music-wave {
+    display: none;
+    position: absolute;
+    bottom: 8px;
+    height: 8px;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.music-wave span {
+    width: 2px;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 1px;
+    animation: wave-bar 1.2s ease infinite alternate;
+}
+
+.music-wave span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.music-wave span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.bgm-btn.playing .icon-music {
+    opacity: 0.15;
+}
+
+.bgm-btn.playing .music-wave {
+    display: flex;
+}
+
+@keyframes wave-bar {
+    0% { height: 2px; }
+    100% { height: 8px; }
+}
+
+/* ==========================================
+   Section 1: Cover Section (Crossfading Slider)
+   ========================================== */
+.cover-section {
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cover-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cover-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1.8s ease-in-out, transform 8s linear;
+    z-index: 1;
+}
+
+.cover-slider .slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(44, 42, 41, 0.4) 0%,
+        rgba(44, 42, 41, 0.1) 40%,
+        rgba(44, 42, 41, 0.3) 70%,
+        rgba(44, 42, 41, 0.65) 100%
+    );
+    z-index: 3;
+}
+
+.cover-content {
+    position: relative;
+    z-index: 4;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.cover-subtitle {
+    font-family: var(--font-serif-en);
+    font-size: 0.9rem;
+    letter-spacing: 0.35em;
+    margin-top: 3.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    font-weight: 500;
+}
+
+.cover-title {
+    font-family: var(--font-serif-ko);
+    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.cover-title .name {
+    letter-spacing: 0.1em;
+}
+
+.cover-title .ampersand {
+    font-family: var(--font-serif-en);
+    font-size: 1.6rem;
+    color: var(--primary-light);
+    opacity: 0.9;
+}
+
+.cover-date-place {
+    margin-bottom: 4rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cover-date-place .date {
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+}
+
+.cover-date-place .place {
+    font-family: var(--font-serif-ko);
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+/* Scroll indicator animation */
+.scroll-indicator {
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+    animation: scroll-bounce 2s infinite;
+}
+
+.scroll-indicator svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--white);
+}
+
+@keyframes scroll-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+/* ==========================================
+   Section 2: Invitation / Greeting
+   ========================================== */
+.invitation-section {
+    padding: 5.5rem 2rem;
+    background-color: var(--bg-primary);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.greeting-content {
+    margin-bottom: 4rem;
+}
+
+.greeting-verse {
+    font-family: var(--font-serif-ko);
+    font-size: 1.02rem;
+    color: var(--text-main);
+    line-height: 2.1;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.greeting-verse:last-child {
+    margin-bottom: 0;
+}
+
+/* Parent/Child Family Relations Grid */
+.family-relations {
+    margin-bottom: 4rem;
+    padding: 2.2rem 1.5rem;
+    border-radius: 16px;
+    background-color: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.relation-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif-ko);
+    font-size: 1.05rem;
+}
+
+.relation-row .parent {
+    color: var(--text-main);
+    font-weight: 400;
+    min-width: 110px;
+    text-align: right;
+}
+
+.relation-row .connector {
+    color: var(--text-sub);
+    font-size: 0.85rem;
+    margin: 0 0.8rem;
+    display: inline-block;
+}
+
+.relation-row .child {
+    color: var(--primary-dark);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    min-width: 50px;
+    text-align: left;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   Section 3: Calendar & Countdown
+   ========================================== */
+.countdown-section {
+    padding: 5.5rem 2rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+/* Calendar Card Design */
+.calendar-wrapper {
+    background-color: var(--bg-primary);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border-color);
+    margin-bottom: 3.5rem;
+}
+
+.calendar-header {
+    margin-bottom: 1.5rem;
+}
+
+.calendar-header .year-month {
+    font-family: var(--font-serif-en);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--text-main);
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans-en);
+    font-size: 0.95rem;
+}
+
+.calendar-table th, .calendar-table td {
+    padding: 0.6rem 0;
+    width: 14.28%;
+    text-align: center;
+    font-weight: 400;
+}
+
+.calendar-table th {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    font-weight: 500;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-table td {
+    color: var(--text-main);
+    position: relative;
+    height: 42px;
+}
+
+.calendar-table td.empty {
+    visibility: hidden;
+}
+
+.calendar-table td.sun {
+    color: #D36A6A; /* Warm Red */
+}
+
+.calendar-table td.fri {
+    /* Friday highlights or defaults */
+}
+
+.calendar-table td.wedding-day {
+    color: var(--white) !important;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.calendar-table td.wedding-day span {
+    background-color: var(--primary-color);
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 3px 8px rgba(198, 139, 117, 0.4);
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(198, 139, 117, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(198, 139, 117, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(198, 139, 117, 0);
+    }
+}
+
+/* Real-Time Countdown Layout */
+.countdown-container {
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.countdown-boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.countdown-box {
+    flex: 1;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.9rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+}
+
+.countdown-box .time-num {
+    font-family: var(--font-sans-en);
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: var(--primary-dark);
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+}
+
+.countdown-box .time-label {
+    font-family: var(--font-sans-en);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    color: var(--text-sub);
+    font-weight: 500;
+}
+
+.countdown-message {
+    font-family: var(--font-serif-ko);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.countdown-message strong {
+    color: var(--primary-dark);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   Section 4: Photo Gallery Grid
+   ========================================== */
+.gallery-section {
+    padding: 5.5rem 1.5rem;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 6px;
+    margin-bottom: 2rem;
+    /* Smooth height auto change transition */
+    max-height: 480px; /* Only show first 3 rows initially */
+    overflow: hidden;
+    transition: max-height 0.8s ease-in-out;
+}
+
+.gallery-grid.expanded {
+    max-height: 2500px; /* Fully expand when requested */
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+/* Hover and active states for gallery grid elements */
+.gallery-item:active img {
+    transform: scale(0.96);
+}
+
+/* Beautiful masonry grid style variants */
+.gallery-grid .size-tall {
+    grid-row: span 2;
+    aspect-ratio: 1 / 2;
+}
+
+.gallery-grid .size-wide {
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+}
+
+/* Add specific styling for expandable buttons */
+.expand-btn {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   Section 5: Location / Directions
+   ========================================== */
+.location-section {
+    padding: 5.5rem 2rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.location-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.location-info .hall-name {
+    font-family: var(--font-serif-ko);
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+.location-info .hall-address {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+.location-info .hall-tel {
+    font-size: 0.85rem;
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+/* Map Card Placeholder (Premium Graphic Design) */
+.map-card-wrapper {
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.map-placeholder {
+    height: 200px;
+    background-color: #EBF0EC; /* Soft Map Greige-Green */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Abstract artistic styling for map lines */
+.map-grid-art {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.8;
+}
+
+.map-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 16px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    transform: rotate(-15deg);
+    top: 60px;
+    left: 40px;
+}
+
+.map-placeholder::after {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 12px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    transform: rotate(30deg);
+    bottom: 50px;
+    right: -20px;
+}
+
+.map-pin {
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-color);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: relative;
+    z-index: 5;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.25);
+    animation: bounce 1.8s infinite;
+}
+
+.map-pin::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-color: var(--white);
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+.map-label {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    z-index: 5;
+    background-color: rgba(253, 251, 247, 0.95);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-color);
+}
+
+/* Quick Navigation Links */
+.nav-links {
+    display: flex;
+    background-color: var(--white);
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-links .nav-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.9rem 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: var(--transition-quick);
+    border-right: 1px solid var(--border-color);
+}
+
+.nav-links .nav-btn:last-child {
+    border-right: none;
+}
+
+.nav-links .nav-btn:active {
+    background-color: var(--bg-secondary);
+}
+
+.nav-links .nav-btn.naver {
+    color: #2DB400; /* Naver Green */
+}
+.nav-links .nav-btn.kakao {
+    color: #FEE500; /* Kakao Yellow text shadow or dark tone */
+    color: #C07900;
+}
+.nav-links .nav-btn.tmap {
+    color: #FF5E00; /* Tmap Orange */
+}
+
+/* Directions Details */
+.transit-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.transit-info-item {
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 1.2rem;
+}
+
+.transit-info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.transit-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.badge-subway {
+    background-color: #3C7FBF;
+}
+
+.badge-bus {
+    background-color: #3CBF5A;
+}
+
+.badge-car {
+    background-color: #8C7C70;
+}
+
+.transit-desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+}
+
+.transit-desc strong {
+    color: var(--text-main);
+}
+
+/* ==========================================
+   Section 6: Account Info / Accordions
+   ========================================== */
+.accounts-section {
+    padding: 5.5rem 2rem;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.accordion-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--white);
+    transition: var(--transition-smooth);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1.1rem 1.4rem;
+    background-color: var(--bg-secondary);
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: var(--font-sans-ko);
+    font-weight: 500;
+    color: var(--text-main);
+    transition: var(--transition-quick);
+}
+
+.accordion-header:active {
+    background-color: var(--border-color);
+}
+
+.chevron-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--text-sub);
+    transition: transform 0.3s ease;
+}
+
+/* Active accordion rotation */
+.accordion-item.active .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: var(--white);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 200px; /* Expands smoothly */
+}
+
+.account-card {
+    padding: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.account-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.account-details .bank-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.account-details .account-num {
+    font-family: var(--font-sans-en);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.02em;
+}
+
+.account-details .account-owner {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.btn-copy {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: var(--transition-quick);
+    outline: none;
+}
+
+.btn-copy:active {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    border-color: var(--primary-light);
+}
+
+/* ==========================================
+   Footer Section
+   ========================================== */
+.wedding-footer {
+    padding: 5rem 2rem;
+    background-color: var(--bg-secondary);
+    text-align: center;
+}
+
+.wedding-footer .hearts {
+    font-family: var(--font-serif-ko);
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.wedding-footer .thanks {
+    font-family: var(--font-serif-ko);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.wedding-footer .copyright {
+    font-family: var(--font-sans-en);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--text-sub);
+}
+
+/* ==========================================
+   Interaction Popups (Lightbox & Call Modals)
+   ========================================== */
+/* Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    z-index: 2010;
+    transition: var(--transition-quick);
+}
+
+.lightbox-close:hover {
+    color: var(--primary-color);
+}
+
+.lightbox-content-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.lightbox-img.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--white);
+    opacity: 0.7;
+    cursor: pointer;
+    padding: 1.5rem 1rem;
+    z-index: 2005;
+    transition: var(--transition-quick);
+}
+
+.lightbox-btn:active {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-btn svg {
+    width: 32px;
+    height: 32px;
+}
+
+.lightbox-btn.prev {
+    left: 10px;
+}
+
+.lightbox-btn.next {
+    right: 10px;
+}
+
+/* Call Contact Modals */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1500;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contact-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+.modal-body {
+    position: relative;
+    z-index: 1505;
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--bg-primary);
+    border-radius: 24px 24px 0 0;
+    padding: 2.2rem 1.8rem;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-sizing: border-box;
+}
+
+.contact-modal.active .modal-body {
+    transform: translateY(0);
+}
+
+.modal-title {
+    font-family: var(--font-serif-ko);
+    font-size: 1.15rem;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 1.8rem;
+    font-weight: 500;
+}
+
+.modal-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.modal-contact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-contact-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.contact-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.contact-actions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.circle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition-quick);
+}
+
+.circle-btn:active {
+    transform: scale(0.9);
+}
+
+.circle-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.circle-btn.phone {
+    background-color: var(--primary-color);
+}
+
+.circle-btn.message {
+    background-color: var(--text-sub);
+}
+
+.btn-close-modal {
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+/* Toast Notification Styles */
+.toast-container {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background-color: rgba(44, 42, 41, 0.9);
+    color: var(--white);
+    padding: 0.75rem 1.8rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   Scroll Reveal Animations
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade-in for cover text elements */
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fade-in-anim 1.2s forwards cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cover-subtitle.fade-in {
+    animation-delay: 0.3s;
+}
+
+.cover-title.fade-in {
+    animation-delay: 0.6s;
+}
+
+.cover-date-place.fade-in {
+    animation-delay: 0.9s;
+}
+
+@keyframes fade-in-anim {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   Gallery Sub-page specific styles
+   ========================================== */
+.gallery-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+}
+
+.gallery-page-header .back-btn {
+    position: absolute;
+    left: 1.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: var(--transition-quick);
+}
+
+.gallery-page-header .back-btn:active {
+    transform: scale(0.9);
+}
+
+.gallery-page-header .back-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.gallery-page-title {
+    font-family: var(--font-serif-en);
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.gallery-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.2rem 1.5rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gallery-tabs .tab-btn {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    font-family: var(--font-sans-ko);
+    font-weight: 500;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: var(--transition-quick);
+    outline: none;
+}
+
+.gallery-tabs .tab-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(198, 139, 117, 0.2);
+}
+
+.gallery-content-area {
+    padding: 1.5rem 1rem;
+    flex-grow: 1;
+    background-color: var(--bg-primary);
+}
+
+.page-grid {
+    max-height: none !important; /* Overwrite homepage max-height constraint */
+    overflow: visible !important;
+}
+
+/* Smooth filtering transition */
+.gallery-item {
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

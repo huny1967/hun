@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>석의찬 & 이수현 - 사진첩</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="석의찬과 이수현의 결혼식 사진첩입니다.">
+    <meta property="og:title" content="석의찬 ♥ 이수현 사진첩">
+    <meta property="og:description" content="우리의 소중한 순간들을 담았습니다.">
+    <meta property="og:image" content="pictures/함께14.JPG">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        
+        <!-- Gallery Header -->
+        <header class="gallery-page-header">
+            <a href="index.html" class="back-btn" aria-label="메인 페이지로 이동">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <h1 class="gallery-page-title">GALLERY</h1>
+        </header>
+
+        <!-- Category Tabs -->
+        <div class="gallery-tabs">
+            <button class="tab-btn active" data-filter="all">전체</button>
+            <button class="tab-btn" data-filter="couple">신랑 &amp; 신부</button>
+            <button class="tab-btn" data-filter="bride">신부 독사진</button>
+        </div>
+
+        <!-- Scrollable Masonry Gallery Container -->
+        <div class="gallery-content-area">
+            <div class="gallery-grid page-grid">
+                <!-- 18 Images mapped with data-category -->
+                <div class="gallery-item size-tall" data-category="couple">
+                    <img src="pictures/함께14.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="bride">
+                    <img src="pictures/신부1.JPG" alt="신부 독사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께2.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item size-wide" data-category="couple">
+                    <img src="pictures/함께3.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께4.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item size-tall" data-category="couple">
+                    <img src="pictures/함께5.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="bride">
+                    <img src="pictures/신부2.JPG" alt="신부 독사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께6.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item size-wide" data-category="couple">
+                    <img src="pictures/함께7.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께8.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께9.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item size-tall" data-category="couple">
+                    <img src="pictures/함께10.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="bride">
+                    <img src="pictures/신부3.JPG" alt="신부 독사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께11.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께12.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item size-wide" data-category="couple">
+                    <img src="pictures/함께13.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="bride">
+                    <img src="pictures/신부4.JPG" alt="신부 독사진" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="couple">
+                    <img src="pictures/함께1.JPG" alt="웨딩 사진" loading="lazy">
+                </div>
+            </div>
+        </div>
+
+        <!-- Small Footer for Gallery -->
+        <footer class="wedding-footer">
+            <p class="hearts">의찬 ♥ 수현</p>
+            <p class="copyright">&copy; 2026. 석의찬 & 이수현. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- Full Screen Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-btn prev" aria-label="이전 사진">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <div class="lightbox-content-wrapper">
+            <img class="lightbox-img" id="lightbox-image" src="" alt="확대 사진">
+        </div>
+        <button class="lightbox-btn next" aria-label="다음 사진">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Script Block for Filtering and Lightbox navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const items = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.prev');
+            const nextBtn = lightbox.querySelector('.next');
+            
+            let activeImgList = [];
+            let activeImgIndex = 0;
+            
+            // Generate active list based on filter
+            function updateActiveImageList() {
+                activeImgList = [];
+                items.forEach(item => {
+                    if (item.style.display !== 'none') {
+                        const img = item.querySelector('img');
+                        activeImgList.push(img.src);
+                    }
+                });
+            }
+
+            // Init Image List
+            updateActiveImageList();
+
+            // 1. Filtering Logic
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const filterValue = tab.getAttribute('data-filter');
+                    
+                    items.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filterValue === 'all' || category === filterValue) {
+                            item.style.display = 'block';
+                            // Fade in effect
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.95)';
+                            // Hide after transition
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                    
+                    // Re-compile active image list after transition completes
+                    setTimeout(updateActiveImageList, 350);
+                });
+            });
+
+            // 2. Lightbox logic
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const clickedImgSrc = item.querySelector('img').src;
+                    activeImgIndex = activeImgList.indexOf(clickedImgSrc);
+                    if (activeImgIndex === -1) activeImgIndex = 0;
+                    
+                    showLightboxImage(activeImgIndex);
+                    lightbox.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function showLightboxImage(index) {
+                if (!lightboxImg || activeImgList.length === 0) return;
+                lightboxImg.classList.remove('loaded');
+                lightboxImg.src = activeImgList[index];
+                lightboxImg.onload = () => {
+                    lightboxImg.classList.add('loaded');
+                };
+            }
+
+            function showNextImage() {
+                if (activeImgList.length === 0) return;
+                activeImgIndex = (activeImgIndex + 1) % activeImgList.length;
+                showLightboxImage(activeImgIndex);
+            }
+
+            function showPrevImage() {
+                if (activeImgList.length === 0) return;
+                activeImgIndex = (activeImgIndex - 1 + activeImgList.length) % activeImgList.length;
+                showLightboxImage(activeImgIndex);
+            }
+
+            if (lightbox) {
+                closeBtn.addEventListener('click', () => {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = '';
+                });
+                
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrapper')) {
+                        lightbox.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showPrevImage();
+                });
+                
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showNextImage();
+                });
+                
+                document.addEventListener('keydown', (e) => {
+                    if (lightbox.style.display === 'flex') {
+                        if (e.key === 'ArrowRight') showNextImage();
+                        if (e.key === 'ArrowLeft') showPrevImage();
+                        if (e.key === 'Escape') {
+                            lightbox.style.display = 'none';
+                            document.body.style.overflow = '';
+                        }
+                    }
+                });
+
+                // Swipe support
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                lightbox.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                
+                lightbox.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+                
+                function handleSwipe() {
+                    const threshold = 50;
+                    if (touchEndX < touchStartX - threshold) {
+                        showNextImage();
+                    }
+                    if (touchEndX > touchStartX + threshold) {
+                        showPrevImage();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
